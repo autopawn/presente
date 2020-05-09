@@ -63,8 +63,10 @@ void state_update(level *lvl, state *sta){
             // Start the bullet on the player's position
             new_bullet->ent.x      = sta->pla.ent.x;
             new_bullet->ent.y      = sta->pla.ent.y;
+            // Bullet speed is set to the aiming angle
             new_bullet->ent.vx     =  BULLET_SPEED*cos(sta->aim_angle);
             new_bullet->ent.vy     = -BULLET_SPEED*sin(sta->aim_angle);
+            //
             new_bullet->ent.rad    = BULLET_RAD;
             new_bullet->ent.hp     = BULLET_DMG;
         }
