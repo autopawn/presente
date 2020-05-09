@@ -57,3 +57,5 @@ Low budget game for LP
 
 - GUI
   - Añadir barra de vida del jugador y de los enemigos
+
+- Rotational camera
