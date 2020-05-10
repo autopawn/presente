@@ -36,7 +36,7 @@ void state_update(level *lvl, state *sta){
     mov_y += sta->button_state[3];
     float mov_norm = sqrt(mov_x*mov_x+mov_y*mov_y);
 
-    if(mov_norm==0){
+    if(mov_norm==0 || sta->pla.ent.dead){
         // If nothing is being pressed, deacelerate the player
         sta->pla.ent.vx *= 0.6;
         sta->pla.ent.vy *= 0.6;
@@ -50,7 +50,7 @@ void state_update(level *lvl, state *sta){
     // Lower the player's cooldown by 1
     sta->pla.cooldown -= 1;
     // If the shoot button is pressed and the player cooldown is smaller than 0, shoot a bullet
-    if(sta->button_state[4] && sta->pla.cooldown<=0){
+    if(sta->button_state[4] && sta->pla.cooldown<=0 && !sta->pla.ent.dead){
         // Reset the player cooldown to a positive value so that he can't shoot for that amount of frames
         sta->pla.cooldown = PLAYER_COOLDOWN;
         // Ensure that the new bullet won't be created if that would overflow the bullets array
@@ -87,6 +87,7 @@ void state_update(level *lvl, state *sta){
     // == Update entities
     // Update player
     entity_physics(lvl,&sta->pla.ent);
+    if(sta->pla.ent.hp<=0) sta->pla.ent.dead=1;
     // Update enemies
     for(int i=0;i<sta->n_enemies;i++){
         entity_physics(lvl,&sta->enemies[i].ent);
