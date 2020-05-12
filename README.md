@@ -2,5 +2,7 @@
 
 Low budget game for LP
 
-(=ＴェＴ=)
+ /\_/\
+( o.o )
+ > ^ <
 
