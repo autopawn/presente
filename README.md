@@ -2,7 +2,5 @@
 
 Low budget game for LP
 
- /\_/\
-( o.o )
- > ^ <
+(ﾉ*ФωФ)ﾉ
 
